@@ -1,11 +1,11 @@
-import Money from '../src/Money';
+import Money, { Franc } from '../src/Money';
 
 describe('tdd by jest', () => {
 
   it('test multiplication', () => {
     const five: Money = Money.dollar(5);
-    expect(five.times(2)).toStrictEqual(Money.dollar(10));
-    expect(five.times(3)).toStrictEqual(Money.dollar(15));
+    expect(five.times(2)).toEqual(Money.dollar(10));
+    expect(five.times(3)).toEqual(Money.dollar(15));
   });
 
   it('test equality', () => {
@@ -18,13 +18,17 @@ describe('tdd by jest', () => {
 
   it('test franc multiplication', () => {
     const five: Money = Money.franc(5);
-    expect(five.times(2)).toStrictEqual(Money.franc(10));
-    expect(five.times(3)).toStrictEqual(Money.franc(15));
+    expect(five.times(2)).toEqual(Money.franc(10));
+    expect(five.times(3)).toEqual(Money.franc(15));
   });
 
   it('test currency', () => {
     expect(Money.dollar(1).currency()).toBe('USD');
     expect(Money.franc(1).currency()).toBe('CHF');
+  });
+
+  it('test different class equality', () => {
+    expect(new Money(10, 'CHF').equals(new Franc(10, 'CHF'))).toBe(true);
   });
 
 });
