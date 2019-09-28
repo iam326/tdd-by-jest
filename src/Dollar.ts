@@ -1,8 +1,6 @@
 export default class Dollar {
-  amount: number
 
-  constructor(amount: number) {
-    this.amount = amount;
+  constructor(private amount: number) {
   }
 
   times(multiplier: number): Dollar {
