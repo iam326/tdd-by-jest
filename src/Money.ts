@@ -1,6 +1,3 @@
-import Dollar from "./Dollar";
-import Franc from "./Franc";
-
 export default abstract class Money {
   protected amount: number;
 
@@ -21,6 +18,32 @@ export default abstract class Money {
 
   static franc(amount: number): Money {
     return new Franc(amount);
+  }
+
+}
+
+class Dollar extends Money {
+
+  constructor(amount: number) {
+    super();
+    this.amount = amount;
+  }
+
+  times(multiplier: number): Money {
+    return new Dollar(this.amount * multiplier);
+  }
+
+}
+
+class Franc extends Money {
+
+  constructor(amount: number) {
+    super();
+    this.amount = amount;
+  }
+
+  times(multiplier: number): Money {
+    return new Franc(this.amount * multiplier);
   }
 
 }
