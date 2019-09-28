@@ -6,7 +6,8 @@ export default class Money {
 
   public equals(object: Object): boolean {
     const money: Money = <Money>object;
-    return this.amount === money.amount;
+    return this.amount === money.amount
+      && this.constructor == money.constructor;
   }
 
 }

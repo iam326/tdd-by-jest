@@ -14,6 +14,7 @@ describe('tdd by jest', () => {
     expect(new Dollar(5).equals(new Dollar(6))).toBe(false);
     expect(new Franc(5).equals(new Franc(5))).toBe(true);
     expect(new Franc(5).equals(new Franc(6))).toBe(false);
+    expect(new Franc(5).equals(new Dollar(5))).toBe(false);
   });
 
   it('test franc multiplication', () => {
