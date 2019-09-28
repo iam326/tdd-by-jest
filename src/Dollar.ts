@@ -9,4 +9,9 @@ export default class Dollar {
     return new Dollar(this.amount * multiplier);
   }
 
+  public equals(object: Object): boolean {
+    const dollar: Dollar = <Dollar>object;
+    return this.amount === dollar.amount;
+  }
+
 }
