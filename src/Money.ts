@@ -1,4 +1,6 @@
-export default class Money {
+import Expression from './Expression';
+
+export default class Money implements Expression {
 
   constructor(protected amount: number, protected _currency: string) {
   }
@@ -6,6 +8,10 @@ export default class Money {
   times(multiplier: number): Money { 
     return new Money(this.amount * multiplier, this.currency());
   };
+
+  plus(addend: Money): Expression {
+    return new Money(this.amount + addend.amount, this.currency());
+  }
 
   currency(): string {
     return this._currency;

@@ -1,4 +1,6 @@
-import Money, { Franc } from '../src/Money';
+import Money from '../src/Money';
+import Expression from '../src/Expression';
+import Bank from '../src/Bank';
 
 describe('tdd by jest', () => {
 
@@ -17,6 +19,14 @@ describe('tdd by jest', () => {
   it('test currency', () => {
     expect(Money.dollar(1).currency()).toBe('USD');
     expect(Money.franc(1).currency()).toBe('CHF');
+  });
+
+  it ('test simple addition', () => {
+    const five: Money = Money.dollar(5);
+    const sum: Expression = five.plus(five);
+    const bank: Bank = new Bank();
+    const reduced: Money = bank.reduce(sum, 'USD');
+    expect(reduced).toEqual(Money.dollar(10));
   });
 
 });
