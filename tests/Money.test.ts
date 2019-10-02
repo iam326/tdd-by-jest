@@ -51,4 +51,15 @@ describe('tdd by jest', () => {
     expect(result).toEqual(Money.dollar(1));
   });
 
+  it('test reduce money different currency', () => {
+    const bank: Bank = new Bank();
+    bank.addRate('CHF', 'USD', 2);
+    const result: Money = bank.reduce(Money.franc(2), 'USD');
+    expect(result).toEqual(Money.dollar(1));
+  });
+
+  it('test identity rate', () => {
+    expect(new Bank().rate('USD', 'USD')).toBe(1);
+  });
+
 });
