@@ -7,11 +7,11 @@ export default class Money implements Expression {
   constructor(protected _amount: number, protected _currency: string) {
   }
 
-  times(multiplier: number): Money { 
+  times(multiplier: number): Expression { 
     return new Money(this.amount() * multiplier, this.currency());
   };
 
-  plus(addend: Money): Expression {
+  public plus(addend: Expression): Expression {
     return new Sum(this, addend);
   }
 
