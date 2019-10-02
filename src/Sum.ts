@@ -12,8 +12,12 @@ export default class Sum implements Expression {
     this.addend = addend;
   }
 
+  public times(multiplier: number): Expression {
+    return new Sum(this.augend.times(multiplier), this.addend.times(multiplier));
+  }
+
   public plus(addend: Expression): Expression {
-    return addend;
+    return new Sum(this, addend);
   }
 
   public reduce(bank: Bank, to: string): Money {
