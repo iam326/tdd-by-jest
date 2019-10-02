@@ -4,7 +4,7 @@ import Pair from './Pair';
 
 export default class Bank {
 
-  private rates = new Map<Pair, number>();
+  private rates = new Map<string, number>();
 
   reduce(source: Expression, to: string): Money {
     return source.reduce(this, to);
@@ -12,7 +12,7 @@ export default class Bank {
 
   addRate(from: string, to: string, rate: number): void {
     const pair = new Pair(from, to);
-    this.rates.set(pair, rate);
+    this.rates.set(pair.toString(), rate);
   }
 
   rate(from: string, to: string): number {
@@ -20,7 +20,7 @@ export default class Bank {
       return 1;
     }
     const pair = new Pair(from, to);
-    return <number>this.rates.get(pair);
+    return <number>this.rates.get(pair.toString());
   }
 
 }
